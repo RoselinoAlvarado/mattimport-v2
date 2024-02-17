@@ -5,17 +5,24 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { User } from '../models/user.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { getFirestore, setDoc, doc } from '@angular/fire/firestore';
+import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
+import { UtilsService } from './utils.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
   auth = inject(AngularFireAuth);
-  firestore = inject(AngularFirestore)
+  firestore = inject(AngularFirestore);
+  utilSvc = inject(UtilsService);
+
+  getAuth() {
+    return getAuth();
+  }
 
   signIn(user: User) {
     return signInWithEmailAndPassword(getAuth(), user.email, user.password);
@@ -29,7 +36,21 @@ export class FirebaseService {
     return updateProfile(getAuth().currentUser, { displayName });
   }
 
+  sendRecoveryEmail(email: string) {
+    return sendPasswordResetEmail(getAuth(), email);
+  }
+
+  signOut() {
+    getAuth().signOut();
+    localStorage.removeItem('user');
+    this.utilSvc.routerLink('/auth');
+  }
+
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
+  }
+
+  async getDocument(path: string) {
+    return (await getDoc(doc(getFirestore(), path))).data();
   }
 }

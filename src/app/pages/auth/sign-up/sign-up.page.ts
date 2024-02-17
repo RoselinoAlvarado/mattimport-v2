@@ -26,6 +26,7 @@ export class SignUpPage implements OnInit {
   passwordLabel: string = 'Password';
   signUpRoute = 'sign-up';
   forgotPasswordRoute = 'forgot-password';
+  backButtonRoute = '/auth';
 
   ngOnInit() {}
 

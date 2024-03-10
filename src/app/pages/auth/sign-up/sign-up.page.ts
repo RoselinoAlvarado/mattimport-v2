@@ -20,10 +20,10 @@ export class SignUpPage implements OnInit {
   firebaseSvc = inject(FirebaseService);
   utilSvc = inject(UtilsService);
 
-  titleName: string = 'Sign Up';
-  nameLabel: string = 'name';
-  emailLabel: string = 'Email';
-  passwordLabel: string = 'Password';
+  titleName: string = 'Cadastre-se';
+  nameLabel: string = 'Nome';
+  emailLabel: string = 'E-mail';
+  passwordLabel: string = 'Senha';
   signUpRoute = 'sign-up';
   forgotPasswordRoute = 'forgot-password';
   backButtonRoute = '/auth';

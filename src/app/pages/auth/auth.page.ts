@@ -11,8 +11,8 @@ import { UtilsService } from 'src/app/services/utils.service';
 })
 export class AuthPage implements OnInit {
   titleName: string = 'Login';
-  emailLabel: string = 'Email';
-  passwordLabel: string = 'Password';
+  emailLabel: string = 'E-mail';
+  passwordLabel: string = 'Senha';
   signUpRoute = 'sign-up';
   forgotPasswordRoute = 'forgot-password';
 

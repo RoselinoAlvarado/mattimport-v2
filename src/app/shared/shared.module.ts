@@ -1,3 +1,4 @@
+import { AddUpdateProductComponent } from './components/add-update-product/add-update-product.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
@@ -12,13 +13,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     HeaderComponent,
     CustomInputComponent,
-    LogoComponent
+    LogoComponent,
+    AddUpdateProductComponent
   ],
   exports: [
     HeaderComponent,
     CustomInputComponent,
     LogoComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AddUpdateProductComponent
   ],
   imports: [
     CommonModule,

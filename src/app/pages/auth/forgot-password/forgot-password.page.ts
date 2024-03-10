@@ -9,8 +9,8 @@ import { UtilsService } from 'src/app/services/utils.service';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-  titleName: string = 'Recover account';
-  emailLabel: string = 'Email';
+  titleName: string = 'Recuperar conta';
+  emailLabel: string = 'E-mail';
   backButtonRoute = '/auth';
   form = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,7 +29,7 @@ export class ForgotPasswordPage implements OnInit {
         .sendRecoveryEmail(this.form.value.email)
         .then((res) => {
           this.utilSvc.presentToast({
-            message: `Email sent successfully to ${this.form.value.email}`,
+            message: `E-mail enviado com sucesso para ${this.form.value.email}`,
             duration: 1500,
             color: 'primary',
             position: 'middle',

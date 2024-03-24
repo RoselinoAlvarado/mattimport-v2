@@ -20,12 +20,13 @@ export class SignUpPage implements OnInit {
   firebaseSvc = inject(FirebaseService);
   utilSvc = inject(UtilsService);
 
-  titleName: string = 'Sign Up';
-  nameLabel: string = 'name';
-  emailLabel: string = 'Email';
-  passwordLabel: string = 'Password';
+  titleName: string = 'Cadastre-se';
+  nameLabel: string = 'Nome';
+  emailLabel: string = 'E-mail';
+  passwordLabel: string = 'Senha';
   signUpRoute = 'sign-up';
   forgotPasswordRoute = 'forgot-password';
+  backButtonRoute = '/auth';
 
   ngOnInit() {}
 
@@ -43,7 +44,7 @@ export class SignUpPage implements OnInit {
           this.setUserInfo(uid)
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
 
           this.utilSvc.presentToast({
             message: error.message,
@@ -75,8 +76,7 @@ export class SignUpPage implements OnInit {
           this.form.reset();
         })
         .catch((error) => {
-          console.log(error);
-
+          console.error(error);
           this.utilSvc.presentToast({
             message: error.message,
             duration: 2500,

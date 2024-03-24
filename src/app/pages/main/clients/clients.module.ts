@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainPageRoutingModule } from './main-routing.module';
+import { ClientsPageRoutingModule } from './clients-routing.module';
 
-import { MainPage } from './main.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { ClientsPage } from './clients.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MainPageRoutingModule,
-    SharedModule
+    ClientsPageRoutingModule
   ],
-  declarations: [MainPage]
+  declarations: [ClientsPage]
 })
-export class MainPageModule {}
+export class ClientsPageModule {}

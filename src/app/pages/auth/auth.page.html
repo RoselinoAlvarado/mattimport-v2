@@ -21,10 +21,10 @@
         *ngIf="form.controls.email.errors && form.controls.email.touched"
       >
         <div *ngIf="form.controls.email.errors?.['required']">
-          The email is required
+          O e-mail é requerido
         </div>
         <div *ngIf="form.controls.email.errors?.['email']">
-          Insert a valid email
+          Insira um e-mail valido
         </div>
       </div>
       <app-custom-input
@@ -38,20 +38,20 @@
         *ngIf="form.controls.password.errors && form.controls.password.touched"
       >
         <div *ngIf="form.controls.password.errors?.['required']">
-          Password is required
+          Senha requerida
         </div>
       </div>
 
-      <p [routerLink]="forgotPasswordRoute">Forgot password?</p>
+      <p [routerLink]="forgotPasswordRoute">Esqueceu a senha?</p>
 
       <ion-button
         expand="block"
-        mode="android"
+        mode="md"
         class="submit"
         type="submit"
         [disabled]="form.invalid"
       >
-        Login
+        Acesse
         <ion-icon slot="end" name="log-in-outline"></ion-icon>
       </ion-button>
 
@@ -59,10 +59,10 @@
         class="ion-margin-top"
         [routerLink]="signUpRoute"
         expand="block"
-        mode="android"
+        mode="md"
         fill="outline"
       >
-        Sign Up
+        Cadastre-se
         <ion-icon slot="end" name="person-add-outline"></ion-icon>
       </ion-button>
     </form>

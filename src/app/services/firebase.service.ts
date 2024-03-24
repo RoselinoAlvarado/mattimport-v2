@@ -5,17 +5,27 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { User } from '../models/user.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { getFirestore, setDoc, doc } from '@angular/fire/firestore';
+import { getFirestore, setDoc, doc, getDoc, updateDoc } from '@angular/fire/firestore';
+import { UtilsService } from './utils.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from "firebase/storage"
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService {
   auth = inject(AngularFireAuth);
-  firestore = inject(AngularFirestore)
+  firestore = inject(AngularFirestore);
+  storage = inject(AngularFireStorage);
+  utilSvc = inject(UtilsService);
+
+  getAuth() {
+    return getAuth();
+  }
 
   signIn(user: User) {
     return signInWithEmailAndPassword(getAuth(), user.email, user.password);
@@ -29,7 +39,39 @@ export class FirebaseService {
     return updateProfile(getAuth().currentUser, { displayName });
   }
 
+  sendRecoveryEmail(email: string) {
+    return sendPasswordResetEmail(getAuth(), email);
+  }
+
+  signOut() {
+    getAuth().signOut();
+    localStorage.removeItem('user');
+    this.utilSvc.routerLink('/auth');
+  }
+
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
+  }
+
+  updateDocument(path: string, data: any) {
+    return updateDoc(doc(getFirestore(), path), data);
+  }
+
+  async getDocument(path: string) {
+    return (await getDoc(doc(getFirestore(), path))).data();
+  }
+
+  async uploadImage(path: string, data_url: string) {
+    return uploadString(ref(getStorage(), path), data_url, 'data_url').then(() => {
+      return getDownloadURL(ref(getStorage(), path));
+    })
+  }
+
+  async getFilePath(url: string) {
+    return ref(getStorage(), url).fullPath;
+  }
+
+  deleteFile(path: string) {
+    return deleteObject(ref(getStorage(), path));
   }
 }

@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainPageRoutingModule } from './main-routing.module';
+import { NotificationsPageRoutingModule } from './notifications-routing.module';
 
-import { MainPage } from './main.page';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { NotificationsPage } from './notifications.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MainPageRoutingModule,
-    SharedModule
+    NotificationsPageRoutingModule
   ],
-  declarations: [MainPage]
+  declarations: [NotificationsPage]
 })
-export class MainPageModule {}
+export class NotificationsPageModule {}

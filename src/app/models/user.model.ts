@@ -11,13 +11,3 @@ export interface Users {
   phoneNumber: string,
   email: string
 }
-
-export interface Sale {
-  user_id: number,
-  product_name: string,
-  payment_date: string,
-  value: number,
-  paid: number,
-  parcel: number,
-  product_img: string
-}

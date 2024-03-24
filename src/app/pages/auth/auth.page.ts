@@ -36,7 +36,7 @@ export class AuthPage implements OnInit {
           this.getUserInfo(res.user.uid);
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
           this.utilSvc.presentToast({
             message: error.message,
             duration: 2500,
@@ -75,7 +75,7 @@ export class AuthPage implements OnInit {
 
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
           this.utilSvc.presentToast({
             message: error.message,
             duration: 2500,

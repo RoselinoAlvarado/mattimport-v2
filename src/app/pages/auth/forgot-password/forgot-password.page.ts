@@ -40,7 +40,7 @@ export class ForgotPasswordPage implements OnInit {
           this.form.reset();
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
           this.utilSvc.presentToast({
             message: error.message,
             duration: 2500,

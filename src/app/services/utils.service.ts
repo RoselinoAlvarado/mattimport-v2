@@ -8,6 +8,7 @@ import {
   ToastOptions,
 } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class UtilsService {
   toastCtrl = inject(ToastController);
   router = inject(Router);
   modalCtrl = inject(ModalController);
+  alertCtrl = inject(AlertController);
 
   async takePicture(promptLabelHeader: string) {
     return await Camera.getPhoto({
@@ -61,5 +63,29 @@ export class UtilsService {
 
   dismissModal(data?: any) {
     return this.modalCtrl.dismiss(data);
+  }
+
+  async presentAlert(headerContent: string): Promise<boolean> {
+    return new Promise<boolean>(async (resolve) => {
+      const alert = await this.alertCtrl.create({
+        header: headerContent,
+        mode: 'md',
+        buttons: [
+          {
+            text: 'Não',
+            handler: () => {
+              resolve(false);
+            }
+          },
+          {
+            text: 'Sim',
+            handler: () => {
+              resolve(true);
+            }
+          }
+        ]
+      });
+      await alert.present();
+    });
   }
 }

@@ -44,7 +44,7 @@ export class SignUpPage implements OnInit {
           this.setUserInfo(uid)
         })
         .catch((error) => {
-          console.log(error);
+          console.error(error);
 
           this.utilSvc.presentToast({
             message: error.message,
@@ -76,8 +76,7 @@ export class SignUpPage implements OnInit {
           this.form.reset();
         })
         .catch((error) => {
-          console.log(error);
-
+          console.error(error);
           this.utilSvc.presentToast({
             message: error.message,
             duration: 2500,

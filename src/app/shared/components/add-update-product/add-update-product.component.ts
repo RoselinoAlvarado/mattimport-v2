@@ -154,15 +154,11 @@ export class AddUpdateProductComponent implements OnInit {
   }
 
   async updateProductData() {
-    debugger;
     const loading = await this.utilSvc.loading();
     await loading.present();
     let imageUrl: string;
     let dataUrl = this.form.value.image;
     let imagePath: string;
-
-    console.log(this.product.product_img);
-    console.log(this.form.value.image);
 
     if (this.form.value.image !== this.product.product_img) {
       if (this.product.product_img.includes(this.noImageName)) {

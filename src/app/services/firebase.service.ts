@@ -9,7 +9,7 @@ import {
 } from 'firebase/auth';
 import { User } from '../models/user.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore';
+import { getFirestore, setDoc, doc, getDoc, updateDoc } from '@angular/fire/firestore';
 import { UtilsService } from './utils.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { getStorage, uploadString, ref, getDownloadURL, deleteObject } from "firebase/storage"
@@ -51,6 +51,10 @@ export class FirebaseService {
 
   setDocument(path: string, data: any) {
     return setDoc(doc(getFirestore(), path), data);
+  }
+
+  updateDocument(path: string, data: any) {
+    return updateDoc(doc(getFirestore(), path), data);
   }
 
   async getDocument(path: string) {

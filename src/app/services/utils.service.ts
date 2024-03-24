@@ -6,9 +6,9 @@ import {
   ModalOptions,
   ToastController,
   ToastOptions,
+  AlertController
 } from '@ionic/angular';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
-import { AlertController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',

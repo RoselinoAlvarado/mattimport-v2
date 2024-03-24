@@ -177,13 +177,12 @@ export class AddUpdateProductComponent implements OnInit {
       payment_date: form.paymentDate,
       value: form.value,
       paid: form.paid,
-      product_img: imageUrl ? imageUrl : form.image,
+      product_img: imageUrl || form.image,
     };
 
     this.http.putData(Urls.editSales, this.product.product_id, alterSale).subscribe({
       next: (response) => {
         if (response)
-        this.utilSvc.dismissModal({ success: true });
         loading.dismiss();
         this.utilSvc.presentToast({
           message: 'Venda atualizada com sucesso',

@@ -6,8 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit {
-
-  constructor() { }
+  pages = [
+    {title: 'Home', url: 'home', icon: 'home-outline'},
+    {title: 'Perfil', url: 'profile', icon: 'person-outline'},
+    {title: 'Clientes', url: 'clients', icon: 'person-add-outline'},
+    {title: 'Notificações', url: 'notifications', icon: 'send-outline'},
+    {title: 'Financeiro', url: 'financial', icon: 'wallet-outline'}
+  ]
 
   ngOnInit() {
   }
